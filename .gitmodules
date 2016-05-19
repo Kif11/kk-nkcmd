@@ -1,0 +1,6 @@
+[submodule "modules/yaml"]
+	path = modules/yaml
+	url = https://github.com/Kif11/kk-yaml
+[submodule "modules/pathlib"]
+	path = modules/pathlib
+	url = https://github.com/Kif11/kk-pathlib
