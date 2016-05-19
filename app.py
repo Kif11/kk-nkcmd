@@ -8,18 +8,21 @@ class NukeCmd(object):
 
     def __init__(self):
 
-        with open('conf.yml', 'r') as f:
+        self.module_dir = Path(__file__).parent
+
+        config_file = self.module_dir / 'conf.yml'
+
+        with open(str(config_file), 'r') as f:
             config = yaml.load(f)
 
         self.nuke_path = Path(config['nuke_launcher'])
-        self.pwd = Path('/Users/kif/Desktop/nkcmd')
 
-    def mov_from_seq(self, start_frame, end_frame):
+    def mov_from_seq(self, source, dest, start_frame, end_frame):
 
         script_name = 'mov_from_seq'
-        script_path = self.pwd / 'scripts' / Path(script_name + '.py')
-        source = self.pwd / 'tests/jpgseq/SQ01_SH010.####.jpeg'
-        dest = self.pwd / 'tests/SQ01_SH010.mov'
+        script_path = self.module_dir / 'scripts' / Path(script_name + '.py')
+        # source = self.module_dir / 'tests/jpgseq/SQ01_SH010.####.jpeg'
+        # dest = self.module_dir / 'tests/SQ01_SH010.mov'
 
         cmd = [
             str(self.nuke_path), '-t',
